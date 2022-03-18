@@ -1,10 +1,9 @@
 const pijarFood = (harga, voucher, jarak, pajak) => {
-    
+
     const ongkir = (jarak<=2) ? 5000 : ((jarak-2)*3000)+5000
     const tax = (pajak==true) ? harga * 0.05 : 0
-    const potonganVoucher1 = (0.5 * harga)
-    const potonganVoucher2 = (0.6 * harga)
-    
+
+
 
     if(voucher==false){
         const subTotal = harga + ongkir + tax
@@ -16,6 +15,7 @@ const pijarFood = (harga, voucher, jarak, pajak) => {
                 Sub Total   : ${subTotal}`
     }
     else if(voucher=="PIJARFOOD5"){
+        const potonganVoucher1 = (0.5 * harga)
         if(harga >= 50000){
             if(potonganVoucher1 < 50000){
                 const subTotal = (harga + ongkir + tax) - potonganVoucher1
@@ -48,8 +48,9 @@ const pijarFood = (harga, voucher, jarak, pajak) => {
         }
     }
     else if(voucher=="DITRAKTIRPIJAR"){
+        const potonganVoucher2 = (0.6 * harga)
         if(harga >= 25000){
-            if(potonganVoucher2 < 25000){
+            if(potonganVoucher2 < 30000){
                 const subTotal = (harga + ongkir + tax) - potonganVoucher2
                 return ` 
                 Harga       : ${harga}
@@ -82,12 +83,13 @@ const pijarFood = (harga, voucher, jarak, pajak) => {
     else{
         return "Kode voucher yang anda masukkan salah"
     }
+
 }
 
-console.log(pijarFood(100000,"PIJARFOOD5",5,true))
-console.log(pijarFood(45000,"PIJARFOOD5",3,false))
-console.log(pijarFood(200000,false,1,true))
+// console.log(pijarFood(75000,"PIJARFOOD5",5,true))
+// console.log(pijarFood(45000,"PIJARFOOD5",3,false))
+// console.log(pijarFood(200000,false,1,true))
 
-console.log(pijarFood(100000,"DITRAKTIRPIJAR",5,true))
-console.log(pijarFood(24000,"DITRAKTIRPIJAR",3,false))
-console.log(pijarFood(100000,false,1,true))
+// console.log(pijarFood(100000,"DITRAKTIRPIJAR",5,true))
+console.log(pijarFood(45000,"DITRAKTIRPIJAR",3,true))
+// console.log(pijarFood(100000,"falsesg",1,true))
